@@ -1,0 +1,12 @@
+.post {
+  margin: 16px 0 0 70px;
+}
+.form-control {
+  padding: 15px;
+  border: none;
+  font-size: 1.2rem;
+}
+.form-control:focus {
+  box-shadow: none !important;
+  color: #8b9dc3;
+}
