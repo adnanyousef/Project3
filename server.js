@@ -21,10 +21,10 @@ const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017/project3';
 mongoose.connect(uri, { useNewUrlParser: true });
 
 mongoose.connection.on('error', function (err) {
-  console.log("-----Mongoose error: -----\n" + err);
+	console.log("-----Mongoose error: -----\n" + err);
 });
 mongoose.connection.once('open', function () {
-  console.log("Mongoose connected successfully");
+	console.log("Mongoose connected successfully");
 });
 
 
@@ -38,11 +38,11 @@ app.use(session({
 
 // Passport (configured in ./passport/index.js)
 app.use(passport.initialize());
-app.use(passport.session()); 
+app.use(passport.session());
 
 // Only serve static build folder if deployed
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, 'client/build')));
+	app.use(express.static(path.join(__dirname, 'client/build')));
 };
 
 // Routes
@@ -52,10 +52,11 @@ app.use('/user', userRoutes);
 app.use("/api", postRoutes);
 
 // Handle React routing, return all requests to React app
-// app.get('*', function (req, res) {
-//   res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
-// });
-
+if (process.env.NODE_ENV === "production") {
+	app.get('*', function (req, res) {
+		res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+	});
+};
 
 // Start Server 
 app.listen(PORT, () => {
