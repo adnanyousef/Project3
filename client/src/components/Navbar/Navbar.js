@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logout from "../Logout/Logout";
+import "./Navbar.css";
 
 const Navbar = () => (
   <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -67,7 +68,7 @@ const Navbar = () => (
           Snippets
           </Link>
         </li>
-        <li>
+        <li id="logout">
           <Logout />
         </li>
 

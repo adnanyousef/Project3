@@ -45,7 +45,7 @@ class UserInfo extends Component {
                     </div>
                 </Card>
                 <Card className="skills-card">
-                    <div className="row skills-row">
+                    <div>
                         <div className="col-xs-6">
                           <ul className="languages">
                             <h6>Language(s):</h6>

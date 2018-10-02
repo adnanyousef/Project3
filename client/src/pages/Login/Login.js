@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import UserAPI from "../../utils/userAPI";
-
+import "./Login.css";
 
 class Login extends Component {
     state = {
