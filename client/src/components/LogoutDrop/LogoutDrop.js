@@ -24,7 +24,7 @@ class LogoutDrop extends Component {
           {this.props.name}
         </button>
         <div className={menuClass} aria-labelledby="dropdownMenuButton">
-          <a className="dropdown-item" type="editProfile">
+          <div className="dropdown-item" type="editProfile">
             <Link
               to="/editProfile"
               id="editProfile"
@@ -36,10 +36,10 @@ class LogoutDrop extends Component {
             >
               Edit profile
             </Link>
-          </a>
-          <a className="dropdown-item" id="logoutDrop" type="logout">
+          </div>
+          <div className="dropdown-item" id="logoutDrop" type="logout">
             <Logout />
-          </a>
+          </div>
         </div>
       </div>
     );

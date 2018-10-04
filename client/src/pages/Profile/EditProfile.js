@@ -1,3 +1,4 @@
+/* global $ */
 import React from "react";
 import UserAPI from "../../utils/userAPI";
 import { Col, Row, Container } from "../../components/Grid";
@@ -20,6 +21,8 @@ class EditProfile extends React.Component {
   };
 
   componentDidMount() {
+    $(".collapse").collapse();
+
     UserAPI.getUser().then(data => {
       this.setState({
         id: data.data._id,
@@ -71,7 +74,8 @@ class EditProfile extends React.Component {
 
   cancel = event => {
     event.preventDefault();
-    window.location.replace("/profile");
+    // window.location.replace("/editProfile");
+    $(".collapse").collapse("hide");
   };
 
   handleFollow = event => {
@@ -123,106 +127,323 @@ class EditProfile extends React.Component {
         <Container>
           <Row>
             <Col size="md-8">
-              <div className="test1">
-                <div className="testHeader">Edit Profile</div>
-                <hr />
-                <form>
-                  <label>Profile Pic:</label>
-                  <input
-                    name="pic"
-                    value={this.state.pic}
-                    onChange={this.handleInput}
-                    type="text"
-                  />
-                  <br />
+              <h4 className="editTitle">Edit Profile</h4>
+              <div id="accordion">
+                <div className="card">
+                  <div className="card-header" id="headingOne">
+                    <h5 className="mb-0">
+                      <button
+                        className="btn btn-link"
+                        data-toggle="collapse"
+                        data-target="#collapseOne"
+                        aria-expanded="true"
+                        aria-controls="collapseOne"
+                      >
+                        Profile Pic
+                      </button>
+                    </h5>
+                  </div>
 
-                  <label>Github:</label>
-                  <input
-                    name="github"
-                    value={this.state.github}
-                    onChange={this.handleInput}
-                    type="text"
-                  />
-                  <br />
-
-                  <label>LinkedIn:</label>
-                  <input
-                    name="linkedin"
-                    value={this.state.linkedin}
-                    onChange={this.handleInput}
-                    type="text"
-                  />
-                  <br />
-
-                  <label>Portfolio:</label>
-                  <input
-                    name="portfolio"
-                    value={this.state.portfolio}
-                    onChange={this.handleInput}
-                    type="text"
-                  />
-                  <br />
-
-                  <label>Job Title:</label>
-                  <input
-                    name="jobTitle"
-                    value={this.state.jobTitle}
-                    onChange={this.handleInput}
-                    type="text"
-                  />
-                  <br />
-
-                  <label>Company:</label>
-                  <input
-                    name="jobCompany"
-                    value={this.state.jobCompany}
-                    onChange={this.handleInput}
-                    type="text"
-                  />
-                  <br />
-
-                  <label>Languages (separate with comma):</label>
-                  <input
-                    name="languages"
-                    value={this.state.languages}
-                    onChange={this.handleInput}
-                    type="text"
-                  />
-                  <br />
-
-                  <label>Technologies (separate with comma):</label>
-                  <input
-                    name="technologies"
-                    value={this.state.technologies}
-                    onChange={this.handleInput}
-                    type="text"
-                  />
-                  <br />
-
-                  <button onClick={this.cancel}>Cancel</button>
-                  <button onClick={this.handleSubmit}>Submit</button>
-                </form>
+                  <div
+                    id="collapseOne"
+                    className="collapse show"
+                    aria-labelledby="headingOne"
+                    data-parent="#accordion"
+                  >
+                    <div className="card-body">
+                      <form>
+                        <label />
+                        <input
+                          name="pic"
+                          value={this.state.pic}
+                          onChange={this.handleInput}
+                          type="text"
+                        />
+                        <br />
+                        <button onClick={this.cancel}>Cancel</button>
+                        <button onClick={this.handleSubmit}>Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header" id="headingTwo">
+                    <h5 className="mb-0">
+                      <button
+                        className="btn btn-link collapsed"
+                        data-toggle="collapse"
+                        data-target="#collapseTwo"
+                        aria-expanded="false"
+                        aria-controls="collapseTwo"
+                      >
+                        Github
+                      </button>
+                    </h5>
+                  </div>
+                  <div
+                    id="collapseTwo"
+                    className="collapse"
+                    aria-labelledby="headingTwo"
+                    data-parent="#accordion"
+                  >
+                    <div className="card-body">
+                      <form>
+                        <label />
+                        <input
+                          name="github"
+                          value={this.state.github}
+                          onChange={this.handleInput}
+                          type="text"
+                        />
+                        <br />
+                        <button onClick={this.cancel}>Cancel</button>
+                        <button onClick={this.handleSubmit}>Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header" id="headingThree">
+                    <h5 className="mb-0">
+                      <button
+                        className="btn btn-link collapsed"
+                        data-toggle="collapse"
+                        data-target="#collapseThree"
+                        aria-expanded="false"
+                        aria-controls="collapseThree"
+                      >
+                        LinkedIn
+                      </button>
+                    </h5>
+                  </div>
+                  <div
+                    id="collapseThree"
+                    className="collapse"
+                    aria-labelledby="headingThree"
+                    data-parent="#accordion"
+                  >
+                    <div className="card-body">
+                      <form>
+                        <label />
+                        <input
+                          name="linkedin"
+                          value={this.state.linkedin}
+                          onChange={this.handleInput}
+                          type="text"
+                        />
+                        <br />
+                        <button onClick={this.cancel}>Cancel</button>
+                        <button onClick={this.handleSubmit}>Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header" id="headingFour">
+                    <h5 className="mb-0">
+                      <button
+                        className="btn btn-link collapsed"
+                        data-toggle="collapse"
+                        data-target="#collapseFour"
+                        aria-expanded="false"
+                        aria-controls="collapseFour"
+                      >
+                        Portfolio
+                      </button>
+                    </h5>
+                  </div>
+                  <div
+                    id="collapseFour"
+                    className="collapse"
+                    aria-labelledby="headingFour"
+                    data-parent="#accordion"
+                  >
+                    <div className="card-body">
+                      <form>
+                        <label />
+                        <input
+                          name="portfolio"
+                          value={this.state.portfolio}
+                          onChange={this.handleInput}
+                          type="text"
+                        />
+                        <br />
+                        <button onClick={this.cancel}>Cancel</button>
+                        <button onClick={this.handleSubmit}>Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header" id="headingFive">
+                    <h5 className="mb-0">
+                      <button
+                        className="btn btn-link collapsed"
+                        data-toggle="collapse"
+                        data-target="#collapseFive"
+                        aria-expanded="false"
+                        aria-controls="collapseFiv"
+                      >
+                        Job Title
+                      </button>
+                    </h5>
+                  </div>
+                  <div
+                    id="collapseFive"
+                    className="collapse"
+                    aria-labelledby="headingFive"
+                    data-parent="#accordion"
+                  >
+                    <div className="card-body">
+                      <form>
+                        <label />
+                        <input
+                          name="jobTitle"
+                          value={this.state.jobTitle}
+                          onChange={this.handleInput}
+                          type="text"
+                        />
+                        <br />
+                        <button onClick={this.cancel}>Cancel</button>
+                        <button onClick={this.handleSubmit}>Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header" id="headingSix">
+                    <h5 className="mb-0">
+                      <button
+                        className="btn btn-link collapsed"
+                        data-toggle="collapse"
+                        data-target="#collapseSix"
+                        aria-expanded="false"
+                        aria-controls="collapseSix"
+                      >
+                        Company
+                      </button>
+                    </h5>
+                  </div>
+                  <div
+                    id="collapseSix"
+                    className="collapse"
+                    aria-labelledby="headingSix"
+                    data-parent="#accordion"
+                  >
+                    <div className="card-body">
+                      <form>
+                        <label />
+                        <input
+                          name="jobCompany"
+                          value={this.state.jobCompany}
+                          onChange={this.handleInput}
+                          type="text"
+                        />
+                        <br />
+                        <button onClick={this.cancel}>Cancel</button>
+                        <button onClick={this.handleSubmit}>Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header" id="headingSeven">
+                    <h5 className="mb-0">
+                      <button
+                        className="btn btn-link collapsed"
+                        data-toggle="collapse"
+                        data-target="#collapseSeven"
+                        aria-expanded="false"
+                        aria-controls="collapseSeven"
+                      >
+                        Languages
+                      </button>
+                    </h5>
+                  </div>
+                  <div
+                    id="collapseSeven"
+                    className="collapse"
+                    aria-labelledby="headingSeven"
+                    data-parent="#accordion"
+                  >
+                    <div className="card-body">
+                      <form>
+                        <label>(separate with commas)</label>
+                        <input
+                          name="languages"
+                          value={this.state.languages}
+                          onChange={this.handleInput}
+                          type="text"
+                        />
+                        <br />
+                        <button onClick={this.cancel}>Cancel</button>
+                        <button onClick={this.handleSubmit}>Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div className="card">
+                  <div className="card-header" id="headingEight">
+                    <h5 className="mb-0">
+                      <button
+                        className="btn btn-link collapsed"
+                        data-toggle="collapse"
+                        data-target="#collapseEight"
+                        aria-expanded="false"
+                        aria-controls="collapseEight"
+                      >
+                        Technologies
+                      </button>
+                    </h5>
+                  </div>
+                  <div
+                    id="collapseEight"
+                    className="collapse"
+                    aria-labelledby="headingEight"
+                    data-parent="#accordion"
+                  >
+                    <div className="card-body">
+                      <form>
+                        <label>(separate with commas)</label>
+                        <input
+                          name="technologies"
+                          value={this.state.technologies}
+                          onChange={this.handleInput}
+                          type="text"
+                        />
+                        <br />
+                        <button onClick={this.cancel}>Cancel</button>
+                        <button onClick={this.handleSubmit}>Submit</button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
               </div>
             </Col>
           </Row>
 
           <Row>
             <Col size="md-8">
-              <div className="test2">
-                <h3>You are following:</h3>
+              <div className="followers">
+                <h5>You are following:</h5>
 
                 {this.state.following.map(user => {
                   return (
                     <div key={user._id}>
                       {user.fullName}
-                      <button onClick={() => this.handleUnfollow(user._id)}>
+                      <button
+                        id="editUnfollow"
+                        onClick={() => this.handleUnfollow(user._id)}
+                      >
                         Unfollow
                       </button>
                     </div>
                   );
                 })}
 
-                <p>Follow a user (by id):</p>
+                <hr />
+
+                <p>Follow by username:</p>
                 <form>
                   <input
                     type="text"
@@ -231,19 +452,6 @@ class EditProfile extends React.Component {
                     onChange={this.handleInput}
                   />
                   <button onClick={this.handleFollow}>Follow</button>
-                </form>
-
-                <hr />
-
-                <p>Search for a user (by username):</p>
-                <form>
-                  <input
-                    type="text"
-                    name="searchInput"
-                    value={this.state.searchInput}
-                    onChange={this.handleInput}
-                  />
-                  <button onClick={this.handleSearch}>Search</button>
                 </form>
               </div>
             </Col>
