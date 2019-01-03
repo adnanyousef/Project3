@@ -1,9 +1,0 @@
-.card {
-  position: relative;
-  border: none;
-  background: #343637;
-  color: #48c5da;
-}
-.card > hr {
-  border-color: rgba(255, 255, 255, 0.44);
-}

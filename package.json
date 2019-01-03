@@ -1,44 +1,31 @@
 {
-  "name": "project3",
-  "version": "0.1.0",
-  "private": true,
+  "name": "social-code",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:adnanyousef/SocialCode.git",
+  "author": "Adnan Yousef <yousef.eddy@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "bcrypt": "^3.0.1",
     "bcrypt-nodejs": "^0.0.3",
-    "body-parser": "^1.18.2",
-    "connect-mongo": "^2.0.1",
-    "dotenv": "^6.0.0",
-    "express": "^4.16.2",
-    "express-session": "^1.15.6",
-    "got": "^9.2.2",
-    "metascraper": "^4.4.4",
-    "metascraper-description": "^4.3.5",
-    "metascraper-image": "^4.3.5",
-    "metascraper-title": "^4.3.5",
-    "mongoose": "^5.0.2",
-    "morgan": "^1.9.0",
-    "newsapi": "^2.4.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "jwt-simple": "^0.5.5",
+    "mongoose": "^5.4.1",
+    "morgan": "^1.9.1",
     "passport": "^0.4.0",
-    "passport-local": "^1.0.0",
-    "react-copy-to-clipboard": "^5.0.1",
-    "react-toastify": "^4.4.0"
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "heroku-postbuild": "cd client && yarn && yarn run build",
-    "client": "cd client && yarn start",
-    "server": "nodemon --ignore 'client/*'",
-    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
-    "build": "cd client && yarn run build",
-    "reset_db": "node scripts/reset_db.js",
-    "install-server": "yarn",
-    "install-client": "cd client && yarn",
-    "seed_db": "node scripts/seed_sb.js"
+    "start": "node index.js",
+    "server:dev": "nodemon index.js --ignore client",
+    "client:dev": "cd client && yarn start",
+    "dev": "concurrently 'yarn server:dev' 'yarn client:dev'",
+    "client:build": "cd client && yarn build"
   },
   "devDependencies": {
-    "concurrently": "^3.5.1",
-    "inquirer": "^6.2.0",
-    "nodemon": "^1.17.5"
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.9"
   }
 }
