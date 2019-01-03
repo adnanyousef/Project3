@@ -1,9 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-const uri =
-  process.env.MONGODB_URI ||
-  'mongodb://eddy:eddy1234@ds157223.mlab.com:57223/sandbox1';
+const uri = process.env.MONGODB_URI;
 mongoose.connect(
   uri,
   { useNewUrlParser: true }

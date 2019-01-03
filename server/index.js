@@ -14,8 +14,7 @@ app.use(passport.initialize());
 // Connect to db
 require('./models');
 
-app.get('/', (req, res) => {
-  console.log('main route');
+app.get('/main', (req, res) => {
   res.send('main route lol');
 });
 

@@ -9,6 +9,7 @@
     "bcrypt-nodejs": "^0.0.3",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",
+    "dotenv": "^6.2.0",
     "express": "^4.16.4",
     "jwt-simple": "^0.5.5",
     "mongoose": "^5.4.1",
@@ -19,7 +20,7 @@
   },
   "scripts": {
     "start": "node index.js",
-    "server:dev": "nodemon index.js --ignore client",
+    "server:dev": "NODE_ENV='development' nodemon index.js --ignore client",
     "client:dev": "cd client && yarn start",
     "dev": "concurrently 'yarn server:dev' 'yarn client:dev'",
     "client:build": "cd client && yarn build"
