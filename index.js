@@ -5,8 +5,11 @@ switch (process.env.NODE_ENV) {
     env.config({ path: './.env.development' });
     break;
   case 'production':
-  default:
     env.config({ path: './.env.production' });
+    break;
+  default:
+    env.config();
+    break;
 }
 
 const app = require('./server');

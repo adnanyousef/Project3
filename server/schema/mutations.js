@@ -1,7 +1,9 @@
 const graphql = require('graphql');
 const { GraphQLObjectType, GraphQLString } = graphql;
 const UserType = require('./types/user_type');
-const AuthService = require('../services/auth');
+
+const { signin, signup } = require('../controllers/auth');
+const { authenticate, localSignin } = require('../services/passport');
 
 const mutation = new GraphQLObjectType({
   name: 'Mutation',
@@ -9,11 +11,11 @@ const mutation = new GraphQLObjectType({
     signup: {
       type: UserType,
       args: {
-        email: { type: GraphQLString },
+        username: { type: GraphQLString },
         password: { type: GraphQLString }
       },
-      resolve(parentValue, { email, password }, req) {
-        return AuthService.signup({ email, password, req });
+      resolve(parentValue, args, req) {
+        return signup(args, req);
       }
     },
     logout: {
@@ -24,14 +26,14 @@ const mutation = new GraphQLObjectType({
         return user;
       }
     },
-    login: {
+    signin: {
       type: UserType,
       args: {
-        email: { type: GraphQLString },
+        username: { type: GraphQLString },
         password: { type: GraphQLString }
       },
-      resolve(parentValue, { email, password }, req) {
-        return AuthService.login({ email, password, req });
+      resolve(parentValue, { username, password }, req) {
+        return localSignin({ username, password, req });
       }
     }
   }
