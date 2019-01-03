@@ -1,5 +1,4 @@
 const express = require('express');
-const expressGraphQL = require('express-graphql');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const morgan = require('morgan');
@@ -13,6 +12,7 @@ app.use(cors());
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
+  /* const expressGraphQL = require('express-graphql');
   const schema = require('./schema/schema');
   app.use(
     '/graphql',
@@ -20,15 +20,11 @@ if (process.env.NODE_ENV === 'development') {
       schema,
       graphiql: true
     })
-  );
+  ); */
 }
 
 // Connect to db
 require('./models');
-
-app.get('/main', (req, res) => {
-  res.send('main route lol');
-});
 
 app.use('/api/auth', require('./routes/auth'));
 

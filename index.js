@@ -4,9 +4,9 @@ switch (process.env.NODE_ENV) {
   case 'development':
     env.config({ path: './.env.development' });
     break;
-  case 'production':
+  /*   case 'production':
     env.config({ path: './.env.production' });
-    break;
+    break; */
   default:
     env.config();
     break;
